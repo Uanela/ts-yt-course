@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    /* Modules */
+    "module": "NodeNext", // Or "ESNext" for bundlers
+    "moduleResolution": "NodeNext", // Essential for native ESM in Node
+    "esModuleInterop": true, // Compatibility with CommonJS
+
+    /* Emit */
+    "outDir": "./dist", // Compiled output directory
+    "target": "ES2022", // Modern JS features
+    "strict": true,
+
+    /* Interop */
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src/**/*"]
+}

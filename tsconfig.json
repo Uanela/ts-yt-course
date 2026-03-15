@@ -6,7 +6,7 @@
     "esModuleInterop": true, // Compatibility with CommonJS
 
     /* Emit */
-    "outDir": "./dist", // Compiled output directory
+    "outDir": "./src/scripts/", // Compiled output directory
     "target": "ES2022", // Modern JS features
     "strict": true,
 

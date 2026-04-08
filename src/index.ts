@@ -143,3 +143,21 @@ const car5: CarWithAllProps = {
   speed: 400,
   releaseYear: 2001,
 };
+
+function sum(num1: number, num2: number = 0): Car | string | number {
+  const result = num1 + num2;
+
+  if (result < 5) return result;
+  else if (result < 10) return car5;
+  else return "Hello From World";
+}
+
+console.log(sum(1));
+console.log(sum(1, 7));
+console.log(sum(20));
+
+type Multiply = (num1: number, num2: number) => number;
+
+const multiply: Multiply = (x, y) => {
+  return 0;
+};

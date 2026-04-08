@@ -110,54 +110,80 @@
 // console.log(person2.firstName);
 
 // Union Type |
-const three = 3;
-type ID = string | number | boolean;
+// const three = 3;
+// type ID = string | number | boolean;
 
-let id: ID = 2;
-id = "uanela";
-id = true;
+// let id: ID = 2;
+// id = "uanela";
+// id = true;
 
-interface CarWithModel {
-  model: string;
-  speed: number;
+// interface CarWithModel {
+//   model: string;
+//   speed: number;
+// }
+// interface CarWithName {
+//   name: string;
+//   releaseYear: number;
+// }
+
+// type Car = CarWithModel | CarWithName | string[] | boolean;
+
+// const car1: Car = { model: "Jeep", speed: 300 };
+// const car2: Car = { name: "Hummer", releaseYear: 2005 };
+// const car3: Car = ["Samsung"];
+// const car4: Car = true;
+
+// // Intersection Type &
+
+// type CarWithAllProps = CarWithModel & CarWithName;
+
+// const car5: CarWithAllProps = {
+//   model: "Cx5",
+//   name: "Bwm",
+//   speed: 400,
+//   releaseYear: 2001,
+// };
+
+// function sum(num1: number, num2: number = 0): Car | string | number {
+//   const result = num1 + num2;
+
+//   if (result < 5) return result;
+//   else if (result < 10) return car5;
+//   else return "Hello From World";
+// }
+
+// console.log(sum(1));
+// console.log(sum(1, 7));
+// console.log(sum(20));
+
+// type Multiply = (num1: number, num2: number) => number;
+
+// const multiply: Multiply = (x, y) => {
+//   return 0;
+// };
+
+// any, unknown, void e typeof
+
+// any
+let value: any = "Text";
+value.toUpperCase();
+// value.toFixe();
+value = 2;
+value.toFixed();
+value = true;
+
+// unknown
+let value2: unknown = "Text";
+
+if (typeof value2 === "string") {
+  value2.toUpperCase();
+  // value2.
 }
-interface CarWithName {
-  name: string;
-  releaseYear: number;
+if (typeof value2 === "number") value2.toFixed();
+
+// void
+let value3: void;
+
+function subtract(): void {
+  return 1;
 }
-
-type Car = CarWithModel | CarWithName | string[] | boolean;
-
-const car1: Car = { model: "Jeep", speed: 300 };
-const car2: Car = { name: "Hummer", releaseYear: 2005 };
-const car3: Car = ["Samsung"];
-const car4: Car = true;
-
-// Intersection Type &
-
-type CarWithAllProps = CarWithModel & CarWithName;
-
-const car5: CarWithAllProps = {
-  model: "Cx5",
-  name: "Bwm",
-  speed: 400,
-  releaseYear: 2001,
-};
-
-function sum(num1: number, num2: number = 0): Car | string | number {
-  const result = num1 + num2;
-
-  if (result < 5) return result;
-  else if (result < 10) return car5;
-  else return "Hello From World";
-}
-
-console.log(sum(1));
-console.log(sum(1, 7));
-console.log(sum(20));
-
-type Multiply = (num1: number, num2: number) => number;
-
-const multiply: Multiply = (x, y) => {
-  return 0;
-};

@@ -108,3 +108,38 @@
 
 // console.log(person2.firstName);
 // console.log(person2.firstName);
+
+// Union Type |
+const three = 3;
+type ID = string | number | boolean;
+
+let id: ID = 2;
+id = "uanela";
+id = true;
+
+interface CarWithModel {
+  model: string;
+  speed: number;
+}
+interface CarWithName {
+  name: string;
+  releaseYear: number;
+}
+
+type Car = CarWithModel | CarWithName | string[] | boolean;
+
+const car1: Car = { model: "Jeep", speed: 300 };
+const car2: Car = { name: "Hummer", releaseYear: 2005 };
+const car3: Car = ["Samsung"];
+const car4: Car = true;
+
+// Intersection Type &
+
+type CarWithAllProps = CarWithModel & CarWithName;
+
+const car5: CarWithAllProps = {
+  model: "Cx5",
+  name: "Bwm",
+  speed: 400,
+  releaseYear: 2001,
+};

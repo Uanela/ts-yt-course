@@ -14,40 +14,97 @@
 // firstNames.push(true);
 // console.log(firstNames);
 
-let car: string = "BWM";
-let brand: number = 3;
-// brand = false;
+// let car: string = "BWM";
+// let brand: number = 3;
+// // brand = false;
 
-function getAge(year: number): number | string {
-  if (year > 2000) return 2 + 2;
-  else return "hello";
-}
+// function getAge(year: number): number | string {
+//   if (year > 2000) return 2 + 2;
+//   else return "hello";
+// }
 
-let age = getAge(200);
+// let age = getAge(200);
 
-age = 2;
+// age = 2;
 
-console.log(age);
+// console.log(age);
 
-// Os Error mais comuns
+// // Os Error mais comuns
 
-// 1 - Type x is not assignable to type y
-// 2 - Property x does not exist on type y
-const person: { name: string; age: number } = { name: "Uanela", age: 2 };
-console.log(person.age);
-// 3 - Object is possibly null or undefined
-let product: { name: string } | undefined;
+// // 1 - Type x is not assignable to type y
+// // 2 - Property x does not exist on type y
+// const person: { name: string; age: number } = { name: "Uanela", age: 2 };
+// console.log(person.age);
+// // 3 - Object is possibly null or undefined
+// let product: { name: string } | undefined;
 
-if (product) console.log(product.name);
+// if (product) console.log(product.name);
 
-// 4 - Argument of type x is not assignable to parameter of type y
-function sum(num1: number, num2: number) {
-  return num1 * num2;
-}
-///@ts-ignore
-console.log(sum(4, ":"));
+// // 4 - Argument of type x is not assignable to parameter of type y
+// function sum(num1: number, num2: number) {
+//   return num1 * num2;
+// }
+// ///@ts-ignore
+// console.log(sum(4, ":"));
 
-// Cannot find name x
-///@ts-ignore
-// console.log(laptop);
-console.log("Hello World From TypeScript");
+// // Cannot find name x
+// ///@ts-ignore
+// // console.log(laptop);
+// console.log("Hello World From TypeScript");
+
+// type Address = {
+//   country: string;
+//   city: string;
+//   street: string;
+// };
+
+// // Type Alias
+// type Person = {
+//   readonly firstName: string;
+//   lastName: string;
+//   age?: number;
+//   address: Address;
+// };
+
+// // Toyota, Bmw, Ferrari, Mercedes Benz
+// type BrandName = "Toyota" | "Bmw" | "Ferrari" | "Mercedes Benz";
+
+// // Interface
+// interface Car {
+//   model: string;
+//   brand: { name: BrandName } & Address;
+// }
+
+// const person1: Person = {
+//   firstName: "Uanela",
+//   lastName: "Como",
+//   address: {
+//     country: "Mozambique",
+//     city: "Beira",
+//     street: "Rua 123",
+//   },
+// };
+
+// const person2: Person = {
+//   firstName: "Francisco",
+//   lastName: "Como",
+//   age: 25,
+//   address: {
+//     country: "Portugal",
+//     city: "Beira",
+//     street: "Rua",
+//   },
+// };
+
+// const car: Car = {
+//   model: "Ractis",
+//   brand: {
+//     country: "Portugal",
+//     city: "Beira",
+//     street: "Rua",
+//     name: "Toyota",
+//   },
+// };
+
+// console.log(person2.firstName);
+// console.log(person2.firstName);

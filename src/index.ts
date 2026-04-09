@@ -165,25 +165,103 @@
 // any, unknown, void e typeof
 
 // any
-let value: any = "Text";
-value.toUpperCase();
-// value.toFixe();
-value = 2;
-value.toFixed();
-value = true;
+// let value: any = "Text";
+// value.toUpperCase();
+// // value.toFixe();
+// value = 2;
+// value.toFixed();
+// value = true;
 
-// unknown
-let value2: unknown = "Text";
+// // unknown
+// let value2: unknown = "Text";
 
-if (typeof value2 === "string") {
-  value2.toUpperCase();
-  // value2.
+// if (typeof value2 === "string") {
+//   value2.toUpperCase();
+//   // value2.
+// }
+// if (typeof value2 === "number") value2.toFixed();
+
+// // void
+// let value3: void;
+
+// function subtract(): void {
+//   return;
+// }
+
+// Omit, Pick, Partial
+let users: User[] = [];
+
+interface User {
+  id: number;
+  firstName: string;
+  lastName: string;
+  birthday: Date;
+  height: number;
+  weight: number;
+  createdAt: Date;
 }
-if (typeof value2 === "number") value2.toFixed();
+// Omit
+type CreateUserData = Omit<User, "id" | "createdAt">;
 
-// void
-let value3: void;
+// Pick
+type HealthData = Pick<User, "height" | "weight">;
 
-function subtract(): void {
-  return 1;
+// Partial
+type UpdateUserData = Omit<Partial<User>, "id" | "createdAt">;
+
+function getUserById(id: number): User {
+  return users.find((user) => user.id === id)!;
 }
+
+// function updateUserById(){
+
+// }
+
+function create(data: CreateUserData): User {
+  const user = { id: users.length + 1, createdAt: new Date(), ...data };
+  users.push(user);
+  return user;
+}
+
+function updateHealthById(id: number, data: HealthData): User {
+  let existingUser = getUserById(id);
+  users = users.map((user) => {
+    if (user.id !== id) return user;
+    existingUser = { ...user, ...data };
+    return existingUser;
+  });
+  return existingUser;
+}
+
+function updateUserById(id: number, data: UpdateUserData): User {
+  let existingUser = getUserById(id);
+  users = users.map((user) => {
+    if (user.id !== id) return user;
+    existingUser = { ...user, ...data };
+    return existingUser;
+  });
+  return existingUser;
+}
+
+create({
+  firstName: "Luis",
+  lastName: "Como",
+  birthday: new Date("1976-08-09"),
+  height: 170,
+  weight: 85,
+});
+
+create({
+  firstName: "Leo",
+  lastName: "Messi",
+  birthday: new Date("1976-08-09"),
+  height: 170,
+  weight: 85,
+});
+
+console.log("All users", users);
+
+updateHealthById(2, { weight: 70, height: 160 });
+
+updateUserById(2, { firstName: "Uanela" });
+console.log(" users", users);

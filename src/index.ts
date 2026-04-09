@@ -189,7 +189,146 @@
 // }
 
 // Omit, Pick, Partial
-let users: User[] = [];
+// let users: User[] = [];
+
+// interface User {
+//   id: number;
+//   firstName: string;
+//   lastName: string;
+//   birthday: Date;
+//   height: number;
+//   weight: number;
+//   createdAt: Date;
+// }
+// // Omit
+// type CreateUserData = Omit<User, "id" | "createdAt">;
+
+// // Pick
+// type HealthData = Pick<User, "height" | "weight">;
+
+// // Partial
+// type UpdateUserData = Omit<Partial<User>, "id" | "createdAt">;
+
+// function getUserById(id: number): User {
+//   return users.find((user) => user.id === id)!;
+// }
+
+// // function updateUserById(){
+
+// // }
+
+// function create(data: CreateUserData): User {
+//   const user = { id: users.length + 1, createdAt: new Date(), ...data };
+//   users.push(user);
+//   return user;
+// }
+
+// function updateHealthById(id: number, data: HealthData): User {
+//   let existingUser = getUserById(id);
+//   users = users.map((user) => {
+//     if (user.id !== id) return user;
+//     existingUser = { ...user, ...data };
+//     return existingUser;
+//   });
+//   return existingUser;
+// }
+
+// function updateUserById(id: number, data: UpdateUserData): User {
+//   let existingUser = getUserById(id);
+//   users = users.map((user) => {
+//     if (user.id !== id) return user;
+//     existingUser = { ...user, ...data };
+//     return existingUser;
+//   });
+//   return existingUser;
+// }
+
+// create({
+//   firstName: "Luis",
+//   lastName: "Como",
+//   birthday: new Date("1976-08-09"),
+//   height: 170,
+//   weight: 85,
+// });
+
+// create({
+//   firstName: "Leo",
+//   lastName: "Messi",
+//   birthday: new Date("1976-08-09"),
+//   height: 170,
+//   weight: 85,
+// });
+
+// console.log("All users", users);
+
+// updateHealthById(2, { weight: 70, height: 160 });
+
+// updateUserById(2, { firstName: "Uanela" });
+// console.log(" users", users);
+
+// ReturnType, Record, Parameters
+
+// ReturnType
+
+// type Car = ReturnType<typeof getCar>;
+
+// function getCar() {
+//   return { model: "Toyota", id: 1, plate: "123-ABC" };
+// }
+
+// const car: Car = {
+//   id: 1,
+//   model: "Benz",
+//   plate: "123",
+// };
+
+// // Record
+
+// type User = Record<number | string, string | number>;
+// type Object = Record<string, any>;
+
+// const users: User[] = [{ 0: "valor", chave2: 2 }];
+
+// // Parameters
+// type SetTimeoutParams = Parameters<typeof setTimeout>;
+
+// type Param1 = SetTimeoutParams[0];
+
+function firstItem<T>(arr: T[]): T {
+  return arr[0];
+}
+
+const a = firstItem(["a", "b"]);
+const b = firstItem([2, 1]);
+const c = firstItem(["true", false]);
+
+function tuple<A, B>(a: A, b: B): [A, B] {
+  return [a, b];
+}
+
+const tuple1 = tuple(1, true);
+const tuple2 = tuple(1, { name: "John Doe" });
+
+function limitedFirstItem<T extends { name: string; age: number }>(a: T) {
+  return a;
+}
+
+// const d = limitedFirstItem({ });
+
+/*
+{
+  data: 
+  message: string;
+  total: number;
+  count: number;
+}
+*/
+
+type Car = ReturnType<typeof getCar>;
+
+function getCar() {
+  return { model: "Toyota", id: 1, plate: "123-ABC" };
+}
 
 interface User {
   id: number;
@@ -200,68 +339,14 @@ interface User {
   weight: number;
   createdAt: Date;
 }
-// Omit
-type CreateUserData = Omit<User, "id" | "createdAt">;
 
-// Pick
-type HealthData = Pick<User, "height" | "weight">;
+type Response<T> = {
+  data: T[];
+  message: string;
+  total: number;
+  count: number;
+};
 
-// Partial
-type UpdateUserData = Omit<Partial<User>, "id" | "createdAt">;
+type Users = Response<User>;
 
-function getUserById(id: number): User {
-  return users.find((user) => user.id === id)!;
-}
-
-// function updateUserById(){
-
-// }
-
-function create(data: CreateUserData): User {
-  const user = { id: users.length + 1, createdAt: new Date(), ...data };
-  users.push(user);
-  return user;
-}
-
-function updateHealthById(id: number, data: HealthData): User {
-  let existingUser = getUserById(id);
-  users = users.map((user) => {
-    if (user.id !== id) return user;
-    existingUser = { ...user, ...data };
-    return existingUser;
-  });
-  return existingUser;
-}
-
-function updateUserById(id: number, data: UpdateUserData): User {
-  let existingUser = getUserById(id);
-  users = users.map((user) => {
-    if (user.id !== id) return user;
-    existingUser = { ...user, ...data };
-    return existingUser;
-  });
-  return existingUser;
-}
-
-create({
-  firstName: "Luis",
-  lastName: "Como",
-  birthday: new Date("1976-08-09"),
-  height: 170,
-  weight: 85,
-});
-
-create({
-  firstName: "Leo",
-  lastName: "Messi",
-  birthday: new Date("1976-08-09"),
-  height: 170,
-  weight: 85,
-});
-
-console.log("All users", users);
-
-updateHealthById(2, { weight: 70, height: 160 });
-
-updateUserById(2, { firstName: "Uanela" });
-console.log(" users", users);
+type Cars = Response<Car>;
